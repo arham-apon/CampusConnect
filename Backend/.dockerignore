@@ -1,0 +1,14 @@
+node_modules
+npm-debug.log
+coverage
+tests
+.env
+.env.*
+!.env.example
+firebase.admin.json
+.git
+.gitignore
+*.md
+.idea
+.vscode
+prisma/migrations

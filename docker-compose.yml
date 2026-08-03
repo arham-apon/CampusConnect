@@ -1,0 +1,24 @@
+services:
+  backend:
+    build:
+      context: ./Backend
+    container_name: campusconnect_backend
+    restart: unless-stopped
+    env_file:
+      - ./Backend/.env
+    ports:
+      - "4000:4000"
+    volumes:
+      # firebase-admin credentials are gitignored and excluded from the image;
+      # mount your local copy in read-only.
+      - ./Backend/firebase.admin.json:/app/firebase.admin.json:ro
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: campusconnect_frontend
+    restart: unless-stopped
+    depends_on:
+      - backend
+    ports:
+      - "80:80"
