@@ -9,13 +9,11 @@ venv/
 .env.local
 .env.*.local
 
-# Firebase credentials
+# Firebase credentials (firebase.js itself reads from env vars, safe to commit)
 firebase.admin.json
-firebase.js
 
 # Prisma
 .prisma/
-prisma/migrations/
 
 # IDE
 .vscode/
