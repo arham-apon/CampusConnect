@@ -1,7 +1,7 @@
 // src/pages/Anonymous/pages/Home.jsx
 import { useState, useEffect } from "react";
 import { CATEGORIES } from "../constants/categories";
-import FeedbackModal from "../components/FeedbackModal";
+import FeedbackModal from "../Components/FeedbackModal";
 import Header from "../../../components/Header";
 import Footer from "../../../components/Footer";
 import GoBackButton from "../../../components/GoBackButton";

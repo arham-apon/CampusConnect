@@ -2,8 +2,8 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getFeedbackByCategory } from "../api/feedbackApi";
-import FeedbackList from "../components/FeedbackList";
-import FeedbackModal from "../components/FeedbackModal";
+import FeedbackList from "../Components/FeedbackList";
+import FeedbackModal from "../Components/FeedbackModal";
 import Header from "../../../components/Header";
 import Footer from "../../../components/Footer";
 import GoBackButton from "../../../components/GoBackButton";
