@@ -5,6 +5,7 @@ import { toast } from 'react-hot-toast';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import GoBackButton from '../../components/GoBackButton';
+import { API_BASE_URL } from '../../config/api';
 
 const CATEGORIES = [
     'All',
@@ -16,7 +17,7 @@ const CATEGORIES = [
     'Others'
 ];
 
-const BASE_URL = 'http://localhost:4000/api/marketplace';
+const BASE_URL = `${API_BASE_URL}/api/marketplace`;
 
 export default function MarketplaceFeed() {
     const [posts, setPosts] = useState([]);

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import toast from 'react-hot-toast'
+import { API_BASE_URL } from '../../../config/api';
 
 export default function EditMemberModal({ member, societyId, userEmail, onClose, onSuccess }) {
   const [formData, setFormData] = useState({
@@ -38,8 +39,8 @@ export default function EditMemberModal({ member, societyId, userEmail, onClose,
 
     try {
       const url = member._id
-        ? `http://localhost:4000/api/societies/${societyId}/panel-members/${member._id}`
-        : `http://localhost:4000/api/societies/${societyId}/panel-members`
+        ? `${API_BASE_URL}/api/societies/${societyId}/panel-members/${member._id}`
+        : `${API_BASE_URL}/api/societies/${societyId}/panel-members`
       
       const method = member._id ? 'put' : 'post'
       

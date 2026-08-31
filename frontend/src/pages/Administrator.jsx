@@ -6,10 +6,11 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import GoBackButton from '../components/GoBackButton';
 import toast from 'react-hot-toast';
+import { API_BASE_URL } from '../config/api';
 
-const BACKEND_URL = 'http://localhost:4000/api/administrator/dashboard';
-const ADMIN_REQUESTS_URL = 'http://localhost:4000/api/administrator/admin-requests';
-const SOCIETIES_URL = 'http://localhost:4000/api/administrator/societies';
+const BACKEND_URL = `${API_BASE_URL}/api/administrator/dashboard`;
+const ADMIN_REQUESTS_URL = `${API_BASE_URL}/api/administrator/admin-requests`;
+const SOCIETIES_URL = `${API_BASE_URL}/api/administrator/societies`;
 
 export default function Administrator() {
   const navigate = useNavigate();
@@ -95,7 +96,7 @@ export default function Administrator() {
       const token = sessionStorage.getItem('authToken');
 
       const response = await axios.post(
-        'http://localhost:4000/api/administrator/admin-requests/approve',
+        `${API_BASE_URL}/api/administrator/admin-requests/approve`,
         { requestId, societyId },
         {
           headers: {
@@ -122,7 +123,7 @@ export default function Administrator() {
       const token = sessionStorage.getItem('authToken');
 
       const response = await axios.post(
-        'http://localhost:4000/api/administrator/admin-requests/reject',
+        `${API_BASE_URL}/api/administrator/admin-requests/reject`,
         { requestId, societyId },
         {
           headers: {

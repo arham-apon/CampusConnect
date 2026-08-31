@@ -8,6 +8,7 @@ import ItemCard from './components/ItemCard'
 import PostItemForm from './components/PostItemForm'
 import Loading from '../../components/Loading'
 import { AuthContext } from '../../context/AuthContext'
+import { API_BASE_URL } from '../../config/api';
 
 export default function LostFound() {
   const { User } = AuthContext()
@@ -18,7 +19,7 @@ export default function LostFound() {
   const fetchItems = async () => {
     try {
       setIsLoading(true)
-      const response = await axios.get('http://localhost:4000/api/lost-items/all')
+      const response = await axios.get(`${API_BASE_URL}/api/lost-items/all`)
       if (response.data.success) {
         setItems(response.data.items)
         console.log(response.data.items)
@@ -51,7 +52,7 @@ export default function LostFound() {
 
     try {
       const response = await axios.post(
-        'http://localhost:4000/api/lost-items/create',
+        `${API_BASE_URL}/api/lost-items/create`,
         formData,
         { headers: { 'Authorization': `Bearer ${token}` } }
       )
@@ -73,7 +74,7 @@ export default function LostFound() {
     const token = sessionStorage.getItem('authToken')
     try {
       const response = await axios.put(
-        `http://localhost:4000/api/lost-found/found/${itemId}`,
+        `${API_BASE_URL}/api/lost-found/found/${itemId}`,
         {},
         { headers: { 'Authorization': `Bearer ${token}` } }
       )
@@ -90,7 +91,7 @@ export default function LostFound() {
     const token = sessionStorage.getItem('authToken')
     try {
       const response = await axios.delete(
-        `http://localhost:4000/api/lost-items/delete/${itemId}`,
+        `${API_BASE_URL}/api/lost-items/delete/${itemId}`,
         { headers: { 'Authorization': `Bearer ${token}` } }
       )
       if (response.data.success) {

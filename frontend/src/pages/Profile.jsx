@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { API_BASE_URL } from '../config/api';
 
 export default function ProfileSidebar({ user, isOpen, onClose, onUpdate }) {
     const [formData, setFormData] = useState({
@@ -90,7 +91,7 @@ export default function ProfileSidebar({ user, isOpen, onClose, onUpdate }) {
 
         try {
             const res = await axios.put(
-                "http://localhost:4000/api/auth/update-profile",
+                `${API_BASE_URL}/api/auth/update-profile`,
                 formData,
                 {
                     headers: { Authorization: `Bearer ${token}` },

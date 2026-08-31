@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import { AuthContext } from './AuthContext'; 
+import { API_BASE_URL } from '../config/api';
 
 const DonorContext = createContext(null);
 
@@ -34,7 +35,7 @@ const DonorProvider = ({ children }) => {
         }
         
         try {
-            const response = await axios.get('http://localhost:4000/api/donor/getAllDonors', {
+            const response = await axios.get(`${API_BASE_URL}/api/donor/getAllDonors`, {
                 headers: {
                     'Authorization': `Bearer ${token}` 
                 }
@@ -73,7 +74,7 @@ const DonorProvider = ({ children }) => {
         }
         
         try {
-            const response = await axios.put('http://localhost:4000/api/donor/toggleDonorStatus', {}, {
+            const response = await axios.put(`${API_BASE_URL}/api/donor/toggleDonorStatus`, {}, {
                 headers: {
                     'Authorization': `Bearer ${token}` 
                 }

@@ -1,9 +1,10 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
+import { API_BASE_URL } from '../config/api';
 
 const POLL_INTERVAL = 15000;
-const API_BASE = "http://localhost:4000";
+const API_BASE = `${API_BASE_URL}`;
 
 // ── Type metadata ──────────────────────────────────────────────────────────────
 const TYPE_META = {

@@ -10,6 +10,7 @@ import Loading from '../../components/Loading'
 import { AuthContext } from '../../context/AuthContext' // Corrected import
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import { API_BASE_URL } from '../../config/api';
 
 export default function RoommateWanted() {
   const { User, setUser } = AuthContext(); // Use the global Auth state
@@ -29,7 +30,7 @@ export default function RoommateWanted() {
     try {
       setIsLoadingListings(true)
       const token = sessionStorage.getItem('authToken')
-      const response = await axios.get('http://localhost:4000/api/bookRoom/all', {
+      const response = await axios.get(`${API_BASE_URL}/api/bookRoom/all`, {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -67,7 +68,7 @@ export default function RoommateWanted() {
       const token = sessionStorage.getItem('authToken');
 
       const res = await axios.put(
-        `http://localhost:4000/api/auth/update-profile`,
+        `${API_BASE_URL}/api/auth/update-profile`,
         { gender: selectedGender },
         {
           headers: {
@@ -99,7 +100,7 @@ export default function RoommateWanted() {
       if (editingListing) {
         // Update existing listing
         const res = await axios.put(
-          `http://localhost:4000/api/bookRoom/update/${editingListing.id}`,
+          `${API_BASE_URL}/api/bookRoom/update/${editingListing.id}`,
           newListingData,
           {
             headers: {
@@ -117,7 +118,7 @@ export default function RoommateWanted() {
       } else {
         // Create new listing
         const res = await axios.post(
-          'http://localhost:4000/api/bookRoom/create',
+          `${API_BASE_URL}/api/bookRoom/create`,
           newListingData,
           {
             headers: {
@@ -180,7 +181,7 @@ export default function RoommateWanted() {
         setConfirmModal({ isOpen: false, title: '', message: '', onConfirm: null })
         try {
           const token = sessionStorage.getItem('authToken');
-          const res = await axios.delete(`http://localhost:4000/api/bookRoom/delete/${listingId}`, {
+          const res = await axios.delete(`${API_BASE_URL}/api/bookRoom/delete/${listingId}`, {
             headers: { Authorization: `Bearer ${token}` }
           });
 

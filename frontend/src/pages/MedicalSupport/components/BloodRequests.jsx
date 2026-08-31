@@ -6,6 +6,7 @@ import { useDonorContext } from '../../../context/DonorContext'
 import { AuthContext } from '../../../context/AuthContext'
 import Loading from '../../../components/Loading'
 import axios from 'axios'
+import { API_BASE_URL } from '../../../config/api';
 
 export default function BloodRequests() {
     const { User } = AuthContext();
@@ -85,7 +86,7 @@ export default function BloodRequests() {
         try {
             console.log("Cancelling request with ID:", requestToDelete);
             
-            await axios.delete(`http://localhost:4000/api/request/cancel/${requestToDelete}`, {
+            await axios.delete(`${API_BASE_URL}/api/request/cancel/${requestToDelete}`, {
                 headers: {
                     'Authorization': `Bearer ${token}` 
                 }

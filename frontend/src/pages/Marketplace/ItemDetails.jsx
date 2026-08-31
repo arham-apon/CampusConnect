@@ -6,8 +6,9 @@ import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import GoBackButton from '../../components/GoBackButton';
 import { AuthContext } from '../../context/AuthContext';
+import { API_BASE_URL } from '../../config/api';
 
-const BASE_URL = 'http://localhost:4000/api/marketplace';
+const BASE_URL = `${API_BASE_URL}/api/marketplace`;
 
 export default function MarketplaceItemDetails() {
     const { id } = useParams();

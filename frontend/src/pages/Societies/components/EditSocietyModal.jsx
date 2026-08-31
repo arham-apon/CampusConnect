@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import toast from 'react-hot-toast'
+import { API_BASE_URL } from '../../../config/api';
 
 export default function EditSocietyModal({ society, userEmail, onClose, onSuccess }) {
   const [formData, setFormData] = useState({
@@ -120,7 +121,7 @@ export default function EditSocietyModal({ society, userEmail, onClose, onSucces
         dataToSend.coverPhoto = ''
       }
 
-      const response = await fetch(`http://localhost:4000/api/societies/${society._id}`, {
+      const response = await fetch(`${API_BASE_URL}/api/societies/${society._id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(dataToSend)

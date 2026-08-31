@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import { AuthContext } from './AuthContext';
+import { API_BASE_URL } from '../config/api';
 
 const RecieverContext = createContext(null);
 
@@ -32,7 +33,7 @@ const RecieverProvider = ({ children }) => {
         }
         
         try {
-            const response = await axios.get('http://localhost:4000/api/request/all', {
+            const response = await axios.get(`${API_BASE_URL}/api/request/all`, {
                 headers: {
                     'Authorization': `Bearer ${token}` 
                 }
@@ -62,7 +63,7 @@ const RecieverProvider = ({ children }) => {
         }
         
         try {
-            const response = await axios.post('http://localhost:4000/api/request/create', requestData, {
+            const response = await axios.post(`${API_BASE_URL}/api/request/create`, requestData, {
                 headers: {
                     'Authorization': `Bearer ${token}` 
                 }

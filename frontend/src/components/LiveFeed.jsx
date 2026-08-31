@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
+import { API_BASE_URL } from '../config/api';
 
 const POLL_INTERVAL = 2000;
 
@@ -57,7 +58,7 @@ export default function LiveFeed() {
 
         try {
 
-            const res = await fetch("http://localhost:4000/api/notifications", {
+            const res = await fetch(`${API_BASE_URL}/api/notifications`, {
                 headers: { Authorization: `Bearer ${token}` },
             });
             console.log(res)
@@ -133,7 +134,7 @@ export default function LiveFeed() {
 
         try {
             // Send request to backend first
-            const response = await fetch(`http://localhost:4000/api/notifications/${id}/read`, {
+            const response = await fetch(`${API_BASE_URL}/api/notifications/${id}/read`, {
                 method: "PATCH",
                 headers: { Authorization: `Bearer ${token}` },
             });
@@ -203,7 +204,7 @@ export default function LiveFeed() {
 
         try {
             // Send request to backend first
-            const response = await fetch("http://localhost:4000/api/notifications/read-all", {
+            const response = await fetch(`${API_BASE_URL}/api/notifications/read-all`, {
                 method: "PATCH",
                 headers: {
                     'Content-Type': 'application/json',

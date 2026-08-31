@@ -27,9 +27,13 @@ const initCleanupJob = require('./src/jobs/cleancleanupRequests.js');
 const FRONTEND_DEV_URL = 'http://localhost:5173';
 const GATEWAY_URL = 'http://localhost:4000';
 
+const allowedOrigins = [FRONTEND_DEV_URL, GATEWAY_URL];
+if (process.env.FRONTEND_URL) {
+    allowedOrigins.push(process.env.FRONTEND_URL);
+}
 
 const corsOptions = {
-    origin: [FRONTEND_DEV_URL, GATEWAY_URL],
+    origin: allowedOrigins,
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'],
@@ -60,8 +64,9 @@ app.use('/api', notificationRoutes)
 
 
 
-app.listen(4000, () => {
+const PORT = process.env.PORT || 4000;
+app.listen(PORT, () => {
     connectDB();
     initCleanupJob()
-    console.log('Server running on 4000');
+    console.log(`Server running on ${PORT}`);
 });

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import toast from 'react-hot-toast'
+import { API_BASE_URL } from '../../../config/api';
 
 export default function EditUpcomingEventModal({ event, userEmail, onClose, onSuccess }) {
   const [formData, setFormData] = useState({
@@ -112,7 +113,7 @@ export default function EditUpcomingEventModal({ event, userEmail, onClose, onSu
         delete dataToSend.image
       }
 
-      const response = await axios.put(`http://localhost:4000/api/events/${event._id}`, dataToSend)
+      const response = await axios.put(`${API_BASE_URL}/api/events/${event._id}`, dataToSend)
 
       if (response.data.success) {
         toast.success('Event updated successfully!')

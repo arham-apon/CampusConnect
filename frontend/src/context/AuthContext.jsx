@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React from 'react'
+import { API_BASE_URL } from '../config/api';
 
 const AContext = React.createContext(null)
 export const AuthContext = () => { return React.useContext(AContext) }
@@ -27,7 +28,7 @@ const AutoAuth = ({ children }) => {
         console.log(token)
         try {
             console.log(token)
-            const response = await axios.get('http://localhost:4000/api/auth/me', {
+            const response = await axios.get(`${API_BASE_URL}/api/auth/me`, {
                 headers: {
                     'Authorization': `Bearer ${token}` 
                 }

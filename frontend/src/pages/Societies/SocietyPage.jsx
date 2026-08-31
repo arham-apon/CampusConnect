@@ -13,6 +13,7 @@ import EditEventModal from './components/EditEventModal'
 import EditUpcomingEventModal from './components/EditUpcomingEventModal'
 import EditSocietyModal from './components/EditSocietyModal'
 import EventDrawer from './components/EventDrawer'
+import { API_BASE_URL } from '../../config/api';
 
 export default function SocietyPage() {
   const { id } = useParams()
@@ -48,7 +49,7 @@ export default function SocietyPage() {
 
   const fetchSociety = async () => {
     try {
-      const response = await axios.get(`http://localhost:4000/api/societies/${id}?userEmail=${userEmail}`)
+      const response = await axios.get(`${API_BASE_URL}/api/societies/${id}?userEmail=${userEmail}`)
       if (response.data.success) {
         setSociety(response.data.society)
         setIsFollowing(response.data.society.isFollowing)
@@ -65,7 +66,7 @@ export default function SocietyPage() {
 
   const fetchUpcomingEvents = async () => {
     try {
-      const url = `http://localhost:4000/api/events?societyId=${id}&upcoming=true${userEmail ? `&userEmail=${userEmail}` : ''}`
+      const url = `${API_BASE_URL}/api/events?societyId=${id}&upcoming=true${userEmail ? `&userEmail=${userEmail}` : ''}`
       const response = await axios.get(url)
       if (response.data.success) {
         setUpcomingEvents(response.data.events)
@@ -77,7 +78,7 @@ export default function SocietyPage() {
 
   const handleFollowToggle = async () => {
     try {
-      const response = await axios.post(`http://localhost:4000/api/societies/${id}/follow`, {
+      const response = await axios.post(`${API_BASE_URL}/api/societies/${id}/follow`, {
         userEmail
       })
       if (response.data.success) {
@@ -94,7 +95,7 @@ export default function SocietyPage() {
 
   const handleJoinAsAdmin = async () => {
     try {
-      const response = await axios.post(`http://localhost:4000/api/societies/${id}/join-admin`, {
+      const response = await axios.post(`${API_BASE_URL}/api/societies/${id}/join-admin`, {
         userEmail,
         userName: User?.user_name || User?.email?.split('@')[0]
       })
@@ -129,7 +130,7 @@ export default function SocietyPage() {
         delete dataToSend.image
       }
 
-      const response = await axios.post('http://localhost:4000/api/events', dataToSend)
+      const response = await axios.post(`${API_BASE_URL}/api/events`, dataToSend)
       if (response.data.success) {
         toast.success('Event created successfully!')
         setShowCreateModal(false)
@@ -149,7 +150,7 @@ export default function SocietyPage() {
       onConfirm: async () => {
         setConfirmModal({ isOpen: false, title: '', message: '', onConfirm: null })
         try {
-          const response = await axios.delete(`http://localhost:4000/api/societies/${id}/panel-members/${memberId}`, {
+          const response = await axios.delete(`${API_BASE_URL}/api/societies/${id}/panel-members/${memberId}`, {
             data: { userEmail }
           })
           if (response.data.success) {
@@ -172,7 +173,7 @@ export default function SocietyPage() {
       onConfirm: async () => {
         setConfirmModal({ isOpen: false, title: '', message: '', onConfirm: null })
         try {
-          const response = await axios.delete(`http://localhost:4000/api/societies/${id}/past-gallery/${eventId}`, {
+          const response = await axios.delete(`${API_BASE_URL}/api/societies/${id}/past-gallery/${eventId}`, {
             data: { userEmail }
           })
           if (response.data.success) {
@@ -195,7 +196,7 @@ export default function SocietyPage() {
       onConfirm: async () => {
         setConfirmModal({ isOpen: false, title: '', message: '', onConfirm: null })
         try {
-          const response = await axios.delete(`http://localhost:4000/api/events/${eventId}`)
+          const response = await axios.delete(`${API_BASE_URL}/api/events/${eventId}`)
           if (response.data.success) {
             toast.success('Upcoming event deleted')
             fetchUpcomingEvents()
@@ -226,7 +227,7 @@ export default function SocietyPage() {
         return
       }
 
-      const response = await axios.post(`http://localhost:4000/api/events/${eventId}/register`, {
+      const response = await axios.post(`${API_BASE_URL}/api/events/${eventId}/register`, {
         userEmail
       })
 
@@ -249,7 +250,7 @@ export default function SocietyPage() {
         return
       }
 
-      const response = await axios.post(`http://localhost:4000/api/events/${eventId}/unregister`, {
+      const response = await axios.post(`${API_BASE_URL}/api/events/${eventId}/unregister`, {
         userEmail
       })
 

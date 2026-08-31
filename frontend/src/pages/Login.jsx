@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext.jsx';
 import { AlertTriangle, X, LoaderIcon } from 'lucide-react';
 import '../index.css'
+import { API_BASE_URL } from '../config/api';
 
 const ErrorToast = ({ isVisible, message, onClose }) => {
   useEffect(() => {
@@ -52,8 +53,8 @@ const ErrorToast = ({ isVisible, message, onClose }) => {
   );
 };
 
-const BACKEND_URL = 'http://localhost:4000/api/auth/verify-domain';
-const ADMINISTRATOR_URL = 'http://localhost:4000/api/administrator/login';
+const BACKEND_URL = `${API_BASE_URL}/api/auth/verify-domain`;
+const ADMINISTRATOR_URL = `${API_BASE_URL}/api/administrator/login`;
 
 export default function Login() {
   const { User, setUser, fetchCurrentUser } = AuthContext()

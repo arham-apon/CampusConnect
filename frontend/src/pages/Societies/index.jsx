@@ -8,6 +8,7 @@ import Footer from '../../components/Footer'
 import GoBackButton from '../../components/GoBackButton'
 import EventCalendar from './components/EventCalendar'
 import SocietyCard from './components/SocietyCard'
+import { API_BASE_URL } from '../../config/api';
 
 export default function Societies() {
   const navigate = useNavigate()
@@ -26,7 +27,7 @@ export default function Societies() {
 
   const fetchSocieties = async () => {
     try {
-      const response = await axios.get('http://localhost:4000/api/societies')
+      const response = await axios.get(`${API_BASE_URL}/api/societies`)
       if (response.data.success) {
         setSocieties(response.data.societies)
       }
@@ -41,7 +42,7 @@ export default function Societies() {
   const fetchEvents = async () => {
     try {
       const userEmail = User?.email
-      const url = `http://localhost:4000/api/events${userEmail ? `?userEmail=${userEmail}` : ''}`
+      const url = `${API_BASE_URL}/api/events${userEmail ? `?userEmail=${userEmail}` : ''}`
       const response = await axios.get(url)
       if (response.data.success) {
         setEvents(response.data.events)
@@ -59,7 +60,7 @@ export default function Societies() {
         return
       }
 
-      const response = await axios.post(`http://localhost:4000/api/events/${eventId}/register`, {
+      const response = await axios.post(`${API_BASE_URL}/api/events/${eventId}/register`, {
         userEmail: User.email
       })
 
@@ -81,7 +82,7 @@ export default function Societies() {
         return
       }
 
-      const response = await axios.post(`http://localhost:4000/api/events/${eventId}/unregister`, {
+      const response = await axios.post(`${API_BASE_URL}/api/events/${eventId}/unregister`, {
         userEmail: User.email
       })
 

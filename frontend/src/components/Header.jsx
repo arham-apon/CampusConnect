@@ -2,9 +2,10 @@ import { useState, useEffect, useCallback, useRef } from 'react'
 import { useNavigate } from 'react-router'
 import { AuthContext } from '../context/AuthContext'
 import NotificationTray, { NotificationBell } from './NotificationTray'
+import { API_BASE_URL } from '../config/api';
 
 const POLL_INTERVAL = 15000;
-const API_BASE = "http://localhost:4000";
+const API_BASE = `${API_BASE_URL}`;
 
 export default function Header({ onMenuToggle, showMenuButton = true, handlelogout, onProfileClick }) {
   const { User } = AuthContext()

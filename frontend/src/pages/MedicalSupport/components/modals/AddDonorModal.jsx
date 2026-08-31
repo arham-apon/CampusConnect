@@ -2,6 +2,7 @@ import { X } from 'lucide-react'
 import React, { useState, useEffect } from 'react'
 import { AuthContext } from '../../../../context/AuthContext'
 import axios from 'axios'
+import { API_BASE_URL } from '../../../../config/api';
 
 export default function AddDonorModal({ isOpen, onClose, onSubmit, donorToEdit }) {
 
@@ -46,8 +47,8 @@ export default function AddDonorModal({ isOpen, onClose, onSubmit, donorToEdit }
         setIsSubmitting(true);
 
         const endpoint = isUpdateMode
-            ? 'http://localhost:4000/api/donor/update'
-            : 'http://localhost:4000/api/donor/register';
+            ? `${API_BASE_URL}/api/donor/update`
+            : `${API_BASE_URL}/api/donor/register`;
 
         const method = isUpdateMode ? axios.put : axios.post;
 

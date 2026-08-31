@@ -6,6 +6,7 @@ import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import GoBackButton from '../../components/GoBackButton';
 import { AuthContext } from '../../context/AuthContext';
+import { API_BASE_URL } from '../../config/api';
 
 const CATEGORIES = [
     'Home items',
@@ -102,7 +103,7 @@ export default function CreateMarketplacePost() {
             };
 
             const config = { headers: { Authorization: `Bearer ${token}` } };
-            const res = await axios.post('http://localhost:4000/api/marketplace', payload, config);
+            const res = await axios.post(`${API_BASE_URL}/api/marketplace`, payload, config);
 
             if (res.data.success) {
                 toast.success('Item posted successfully!');
