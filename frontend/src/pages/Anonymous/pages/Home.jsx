@@ -33,8 +33,9 @@ export default function Home() {
         setIsLoading(true);
         try {
             const response = await getAllFeedback();
-            setFeedbacks(response.data);
-            setFilteredFeedbacks(response.data);
+            const data = Array.isArray(response.data) ? response.data : [];
+            setFeedbacks(data);
+            setFilteredFeedbacks(data);
         } catch (error) {
             console.error("Failed to fetch feedbacks:", error);
         } finally {

@@ -1,0 +1,12 @@
+metric,A_task_only,B_plus_tree,C_plus_context,D_normal_agent,D_minus_A,D_minus_B,D_minus_C
+total_cases,29,29,29,29,0,0,0
+correct,17,18,18,21,4,3,3
+incorrect,12,11,11,8,-4,-3,-3
+accuracy_pct,58.6,62.1,62.1,72.4,13.8,10.3,10.3
+false_activations,5,3,2,3,-2,0,1
+false_activation_rate_pct,17.2,10.3,6.9,10.3,-6.9,0.0,3.4
+false_omissions,7,8,9,5,-2,-3,-4
+false_omission_rate_pct,24.1,27.6,31.0,17.2,-6.9,-10.3,-13.8
+precision_pct,70.6,78.6,83.3,82.4,11.8,3.8,-0.9
+recall_pct,63.2,57.9,52.6,73.7,10.5,15.8,21.1
+f1_pct,66.7,66.7,64.5,77.8,11.1,11.1,13.3

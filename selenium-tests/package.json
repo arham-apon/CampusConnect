@@ -1,0 +1,15 @@
+{
+  "name": "campusconnect-selenium-tests",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Selenium WebDriver + Jest end-to-end browser tests for the CampusConnect frontend.",
+  "scripts": {
+    "test": "jest",
+    "test:headed": "cross-env HEADLESS=false jest"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "jest": "^30.4.2",
+    "selenium-webdriver": "^4.27.0"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p \"d:/InternShipProjects/CampusConnect/selenium-tests\")",
+      "Bash(netstat -ano)",
+      "Bash(taskkill //PID 15572 //F)",
+      "Bash(npx jest *)"
+    ],
+    "additionalDirectories": [
+      "d:\\InternShipProjects\\CampusConnect"
+    ]
+  }
+}
